@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCustomerOrderlineTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCustomerOrderlineLabel_lineNo}" for="lineNo" />
+                    <h:inputText id="lineNo" value="#{customerOrderlineController.selected.lineNo}" title="#{bundle.CreateCustomerOrderlineTitle_lineNo}" required="true" requiredMessage="#{bundle.CreateCustomerOrderlineRequiredMessage_lineNo}"/>
+                    <h:outputLabel value="#{bundle.CreateCustomerOrderlineLabel_partNo}" for="partNo" />
+                    <h:inputText id="partNo" value="#{customerOrderlineController.selected.partNo}" title="#{bundle.CreateCustomerOrderlineTitle_partNo}" required="true" requiredMessage="#{bundle.CreateCustomerOrderlineRequiredMessage_partNo}"/>
+                    <h:outputLabel value="#{bundle.CreateCustomerOrderlineLabel_amount}" for="amount" />
+                    <h:inputText id="amount" value="#{customerOrderlineController.selected.amount}" title="#{bundle.CreateCustomerOrderlineTitle_amount}" required="true" requiredMessage="#{bundle.CreateCustomerOrderlineRequiredMessage_amount}"/>
+                    <h:outputLabel value="#{bundle.CreateCustomerOrderlineLabel_orderNo}" for="orderNo" />
+                    <h:selectOneMenu id="orderNo" value="#{customerOrderlineController.selected.orderNo}" title="#{bundle.CreateCustomerOrderlineTitle_orderNo}" required="true" requiredMessage="#{bundle.CreateCustomerOrderlineRequiredMessage_orderNo}">
+                        <f:selectItems value="#{customerOrderController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{customerOrderlineController.create}" value="#{bundle.CreateCustomerOrderlineSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{customerOrderlineController.prepareList}" value="#{bundle.CreateCustomerOrderlineShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCustomerOrderlineIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

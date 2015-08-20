@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="customerOrderline/List.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="login.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="customer/List.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="template.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="customerOrderline/Create.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="customerOrder/Create.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="customerOrder/Edit.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="customerOrderline/Edit.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="customerOrder/List.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="customer/View.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="error.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="customerOrder/View.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="index.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="customer/Edit.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="customer/Create.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="customerOrderline/View.xhtml" x="900" y="150" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

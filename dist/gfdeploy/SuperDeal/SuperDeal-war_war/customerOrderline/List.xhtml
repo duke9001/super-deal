@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCustomerOrderlineTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCustomerOrderlineEmpty}" rendered="#{customerOrderlineController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{customerOrderlineController.items.rowCount > 0}">
+                    <h:outputText value="#{customerOrderlineController.pagination.pageFirstItem + 1}..#{customerOrderlineController.pagination.pageLastItem + 1}/#{customerOrderlineController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{customerOrderlineController.previous}" value="#{bundle.Previous} #{customerOrderlineController.pagination.pageSize}" rendered="#{customerOrderlineController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{customerOrderlineController.next}" value="#{bundle.Next} #{customerOrderlineController.pagination.pageSize}" rendered="#{customerOrderlineController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{customerOrderlineController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCustomerOrderlineTitle_lineNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lineNo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCustomerOrderlineTitle_partNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.partNo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCustomerOrderlineTitle_amount}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.amount}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCustomerOrderlineTitle_orderNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.orderNo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{customerOrderlineController.prepareView}" value="#{bundle.ListCustomerOrderlineViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{customerOrderlineController.prepareEdit}" value="#{bundle.ListCustomerOrderlineEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{customerOrderlineController.destroy}" value="#{bundle.ListCustomerOrderlineDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{customerOrderlineController.prepareCreate}" value="#{bundle.ListCustomerOrderlineCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCustomerOrderlineIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
