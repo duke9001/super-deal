@@ -23,8 +23,8 @@ interaction.
 
 Technologies used
 -----------------------------------------
-Java EE version 6
-jsf 2.1
+Java EE version 6,
+jsf 2.1,
 javaDB
 
 Contact us
