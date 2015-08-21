@@ -2,6 +2,7 @@
 handles  customer  orders  of  a  business  organization
 -----------------------------------------
 FUNCTIONAL 
+-----------------------------------------
 R1: The application shall allow the user to add, edit, and remove Customers. 
 R2: The Customer Orders shall always have a valid customer. 
 R3: The application shall allow the user to add andupdate any of the Customer Orders, 
