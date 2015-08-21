@@ -1,13 +1,16 @@
 package com.superdeal.contoller;
 
-
 import com.superdeal.contoller.util.JsfUtil;
 import com.superdeal.contoller.util.PaginationHelper;
+import com.superdeal.entity.CustomerOrder;
 import com.superdeal.entity.CustomerOrderline;
+import com.superdeal.model.CustomerOrderFacade;
 import com.superdeal.model.CustomerOrderlineFacade;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -21,23 +24,45 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
 /**
- * 
+ *
  * @author udith dissanayake
  * @version 1.0 (20/8/2015)
  */
 @ManagedBean(name = "customerOrderlineController")
 @SessionScoped
 public class CustomerOrderlineController implements Serializable {
+
+    @EJB
+    private CustomerOrderFacade customerOrderFacade;
     @EJB
     private CustomerOrderlineFacade ejbFacade;
-
+    List<CustomerOrder> customerOrderList = new ArrayList<CustomerOrder>();
+    List<CustomerOrderline> customerOrderLineList = new ArrayList<CustomerOrderline>();
     private CustomerOrderline current;
     private DataModel items = null;
-
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private CustomerOrder customerOrder = new CustomerOrder();
 
     public CustomerOrderlineController() {
+    }
+
+    //set Customer Order Amount = Sum of all Customer Order Line Amounts
+    public void addAmountCustomerOrder() {
+
+
+        double total;
+
+        customerOrderList = customerOrderFacade.findAll();
+        for (int i = 0; i < customerOrderList.size(); i++) {
+            customerOrder = customerOrderList.get(i);
+            if (customerOrder.getOrderNo().equals(current.getOrderNo())) {
+                total = customerOrder.getAmount() + current.getAmount();
+                customerOrder.setAmount(total);
+                this.customerOrderFacade.edit(customerOrder);
+            }
+
+        }
     }
 
     public CustomerOrderline getSelected() {
@@ -83,12 +108,16 @@ public class CustomerOrderlineController implements Serializable {
     public String prepareCreate() {
         current = new CustomerOrderline();
         selectedItemIndex = -1;
+
         return "Create";
     }
 
     public String create() {
+
         try {
+
             getFacade().create(current);
+            addAmountCustomerOrder();
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/Bundle").getString("CustomerOrderlineCreated"));
             return prepareCreate();
         } catch (Exception e) {

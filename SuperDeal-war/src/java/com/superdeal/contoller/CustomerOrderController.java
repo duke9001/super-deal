@@ -1,13 +1,15 @@
 package com.superdeal.contoller;
 
-
 import com.superdeal.contoller.util.JsfUtil;
 import com.superdeal.contoller.util.PaginationHelper;
 import com.superdeal.entity.CustomerOrder;
 import com.superdeal.model.CustomerOrderFacade;
+import com.superdeal.model.CustomerOrderlineFacade;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -21,19 +23,19 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
 /**
- * 
+ *
  * @author udith dissanayake
  * @version 1.0 (20/8/2015)
  */
 @ManagedBean(name = "customerOrderController")
 @SessionScoped
 public class CustomerOrderController implements Serializable {
+
     @EJB
     private CustomerOrderFacade ejbFacade;
-
+ 
     private CustomerOrder current;
     private DataModel items = null;
-
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
