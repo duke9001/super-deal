@@ -25,7 +25,8 @@ Technologies used
 -----------------------------------------
 Java EE version 6,
 jsf 2.1,
-javaDB
+javaDB,
+netbeans 7.2
 
 Contact us
 -----------------------------------------
