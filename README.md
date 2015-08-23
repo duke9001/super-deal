@@ -1,5 +1,5 @@
 # super-deal
-handles  customer  orders  of  a  business  organization
+handles  customer  orders  of  a  business  organization. enterprise application
 -----------------------------------------
 FUNCTIONAL 
 -----------------------------------------
@@ -27,6 +27,7 @@ Java EE version 6,
 jsf 2.1,
 javaDB,
 netbeans 7.2
+glassfish
 
 Contact us
 -----------------------------------------
